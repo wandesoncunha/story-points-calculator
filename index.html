@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Story Points</title>
+    <script src="./calculator.js"></script>
+</head>
+<body>
+
+        <p>
+            Habilidade:
+        </p>
+        <select name="skill_score" id="skill_score">
+            <option value="x">Escolha uma opção...</option>
+            <option value="0">Nunca mexi, sei nem pra onde vai isso aí.</option>
+            <option value="1">Tenho algum conhecimento, mas talvez precise de ajuda.</option>
+            <option value="2">Conheço e consigo me virar bem.</option>
+            <option value="3">Domino e faço até chover</option>
+        </select>
+        <br>
+        <p>
+            Esforço envolvido:
+        </p>
+        <select name="works_score" id="works_score">
+            <option value="x">Escolha uma opção...</option>
+            <option value="1">Coisa rápida, no máximo um ajustezinho de teste a mais</option>
+            <option value="2">Deve levar um pouco mais de tempo. Alterar testes antigos e criar novos.</option>
+            <option value="3">Tô cansado só de ler! Será preciso uma quantidade considerável de alterações, talvez em mais de um projeto</option>
+        </select>
+        <br>
+        <p>
+            Risco envolvido:
+        </p>
+        <select name="risk_score" id="risk_score">
+            <option value="x">Escolha uma opção...</option>
+            <option value="0">Não há risco para o negócio</option>
+            <option value="1">Requer um certo cuidado pois pode gerar alguma reclamação</option>
+            <option value="2">Alerta! Algum fluxo importante pode ser bloqueado</option>
+            <option value="3">PARA TUDO! Problema aqui pode gerar um efeito lascado que gera bloqueio e vai ser difícil de corrigir os impactos</option>
+        </select>
+        <br>
+        <br>
+        <button type="button" onclick="calculate()">Calcular sugestão de Complexidade</button>
+        <br>
+        <p id="response"></p>
+        <script>
+            function calculate() {
+                const skillScore = parseInt(document.getElementById('skill_score').value);
+                const worksScore = parseInt(document.getElementById('works_score').value);
+                const riskScore = parseInt(document.getElementById('risk_score').value);
+            
+                const complexityPoints = calculateComplexityPoints(skillScore, worksScore, riskScore);
+                const response = `Sugestão de complexidade: ${complexityPoints} ponto(s).`;
+
+                document.getElementById('response').innerHTML = response;
+            }
+            </script>
+</body>
+</html>
